@@ -13,5 +13,4 @@ cd frontend && npm install
 Jangan lupa import juga file SQL yang sudah disediakan.
 Setelah itu edit juga `your-api-url` yang ada di frontend dan file .ino dengan alamat server ataua alamat ip dari backendnya.
 
-Screenshot:
 ![SS Frontend](simpleIoT.PNG)
