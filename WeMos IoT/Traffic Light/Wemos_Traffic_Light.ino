@@ -13,7 +13,7 @@
 const char* SSID = "SSID";
 const char* PASS = "PASSWORD";
 
-String serverName = "http://your-api-url.com/";
+String serverName = "http://192.168.0.74:8080/api/buttons/";
 // Contoh: http://192.168.0.23:8080/api/buttons/
 
 void setup() {
@@ -26,7 +26,7 @@ void setup() {
   WiFi.begin(SSID, PASS);
   Serial.print("Connecting");
   
-  while(WiFi.status() != WL_CONNECTED) {
+  while(WiFi.status() != WL_COaNNECTED) {
     delay(500);
     Serial.print(".");
   }
@@ -36,21 +36,25 @@ void setup() {
 
 void loop() {
   if (WiFi.status() == WL_CONNECTED) {
-    httpGetButtonRequest(serverName);
+    httpGetButtonRequest();
   }
   delay(500);
 }
 
-String httpGetButtonRequest(String serverName) {
+String httpGetButtonRequest() {
   WiFiClient client;
   HTTPClient http;
-  http.setReuse(true);
   for (int i = 1; i <= 3; i++) {
    String serverNameSum = serverName;
    serverNameSum += i;
        
    char * newServerName = &serverNameSum[0];
    http.begin(client, newServerName);
+
+   Serial.println(newServerName);
+   Serial.println(http.GET());
+
+   Serial.println(http.getString());
    if (http.GET() > 0) {
       // Parse
       DynamicJsonDocument doc(2048);
