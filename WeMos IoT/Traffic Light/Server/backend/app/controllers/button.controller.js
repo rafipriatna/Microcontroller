@@ -75,7 +75,9 @@ exports.delete = (req, res) => {
             id: req.params.id
         }
     }).then(result => {
-        res.send(result);
+        res.status(200).send({
+            message: "Berhasil menghapus data!"
+        });
     }).catch(err => {
         res.status(500).send({
             message: err.message || "Error!"
