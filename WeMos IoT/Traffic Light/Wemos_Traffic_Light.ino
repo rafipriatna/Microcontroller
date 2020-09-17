@@ -13,7 +13,7 @@
 const char* SSID = "SSID";
 const char* PASS = "PASSWORD";
 
-String serverName = "http://192.168.0.74:8080/api/buttons/";
+String serverName = "http://your_ip_url";
 // Contoh: http://192.168.0.23:8080/api/buttons/
 
 void setup() {
